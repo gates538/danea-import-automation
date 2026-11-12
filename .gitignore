@@ -1,0 +1,24 @@
+# Local data and processed files
+File da lavorare/
+File Lavorati/
+**/storico_prezzi.db
+*.xlsx
+*.csv
+*.log
+*.db
+
+# Except the template Excel
+!**/Modello importazione.xlsx
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+.env
+
+# IDEs
+.vscode/
+.idea/

@@ -1,0 +1,62 @@
+GUIDA ALL'USO DI DANEA-IMPORT-AUTOMATION
+=================================================
+
+Questa guida ti spiegherà passo dopo passo come utilizzare l'applicazione "danea-import-automation" per convertire le fatture e i DDT dei tuoi fornitori in un formato compatibile con Danea Easyfatt, con un'interfaccia grafica comoda e intuitiva.
+
+--------------------------------------------------------------------------------
+1. STRUTTURA DEL PROGETTO
+--------------------------------------------------------------------------------
+La cartella del progetto è organizzata in questo modo:
+
+danea-import-automation/             <-- Cartella principale
+  │
+  ├─ danea-import-automation.bat     <-- Fai DOPPIO CLIC qui per avviare il programma!
+  ├─ GUIDA.txt                       <-- Questa guida
+  │
+  ├─ File da lavorare/               <-- Metti QUI le fatture/DDT da elaborare
+  ├─ File Lavorati/                  <-- Qui troverai i file Excel convertiti per Danea ed i report
+  │
+  └─ Script/                         <-- Cartella interna contenente i file di sistema
+       ├─ import_to_danea.py
+       ├─ Modello importazione.xlsx
+       ├─ mappings.json
+       ├─ storico_prezzi.db
+       └─ icon.png
+
+--------------------------------------------------------------------------------
+2. COME USARE IL PROGRAMMA (Guida quotidiana)
+--------------------------------------------------------------------------------
+Ogni volta che vuoi elaborare nuove fatture o DDT:
+
+Fase 1: Inserire i file
+Sposta i file delle fatture o dei DDT (PDF, Excel, CSV o TXT) scaricati dai tuoi fornitori direttamente nella cartella "File da lavorare".
+
+Fase 2: Avviare l'applicazione
+Fai doppio clic sul file "danea-import-automation.bat" che si trova nella cartella principale. 
+Si aprirà una comoda finestra con l'icona personalizzata e due pannelli principali:
+- A sinistra vedrai l'elenco dei file che hai appena inserito in "File da lavorare".
+- A destra vedrai il "Console Log" per monitorare l'elaborazione.
+
+Fase 3: Avviare l'elaborazione
+Clicca sul pulsante "Avvia Elaborazione" in basso a destra.
+L'applicazione elaborerà i file uno ad uno:
+- Estrarrà i codici e calcolerà i prezzi netti.
+- Genererà i file Excel formattati per Danea all'interno della cartella "File Lavorati".
+- Genererà un report riassuntivo in formato testo (es. report_2026-07-18_161500.txt) all'interno di "File Lavorati".
+- Cancellerà automaticamente i file originali elaborati da "File da lavorare" per non occupare spazio inutilmente sul tuo PC.
+
+Fase 4: Importare in Danea
+Apri Danea Easyfatt e importa i file Excel pronti che trovi dentro la cartella "File Lavorati".
+
+--------------------------------------------------------------------------------
+3. CONTROLLO PREZZI & ALLERTE RINCARO
+--------------------------------------------------------------------------------
+Il programma memorizza nel database "storico_prezzi.db" (nella cartella Script) i prezzi netti di ogni acquisto per ciascun articolo e fornitore.
+- Se un fornitore aumenta il prezzo di un articolo rispetto all'ultima volta che lo hai acquistato, lo script lo rileva automaticamente.
+- Aggiungerà una nota ben visibile nel file Excel di Danea sulla riga dell'articolo, es: "AUMENTATO: +23.2% (da 10.00 a 12.32)". 
+- In questo modo vedrai immediatamente quali articoli hanno subito rincari direttamente durante l'importazione del documento su Danea!
+
+--------------------------------------------------------------------------------
+4. SUPPORTACI
+--------------------------------------------------------------------------------
+Se l'automazione ti fa risparmiare tempo ogni giorno, puoi cliccare sul pulsante "Offrimi un caffè ☕" nella parte inferiore del programma per supportare il nostro lavoro!
